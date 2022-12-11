@@ -50,6 +50,7 @@ int main()
     }
     try
     {
+        //it fills the array from 0 1 to 10000 in order to see the difference
         for(size_t i = 0 ; i < big.getN(); i++)
         {
             static int n = rand() % 10 + 1;
