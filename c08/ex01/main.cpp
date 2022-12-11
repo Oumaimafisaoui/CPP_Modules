@@ -23,7 +23,15 @@ int main()
     {
         std::cerr << e.what() << '\n';
     }
-    std::cout << "short span with multiple elements\n";
+    try
+    {
+        span.addNumber(7);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
     try
     {
         std::cout << span.shortspane<int>() << std::endl;
