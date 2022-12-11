@@ -31,3 +31,8 @@ Span &Span::operator=(const Span &obj)
     this->elements.assign(obj.elements.begin(), obj.elements.end());
     return (*this);
 }
+
+size_t Span::getN(void)
+{
+    return (this->N);
+}

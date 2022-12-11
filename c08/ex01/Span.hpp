@@ -4,6 +4,9 @@
 #include <vector>
 #include <limits>
 #include <iostream>
+#include <algorithm>
+#include <cmath>
+
 class Span{
     private:
         unsigned int N;
@@ -14,7 +17,7 @@ class Span{
         ~Span();
         Span(const Span &obj);
         Span &operator=(const Span &obj);
-
+        size_t getN(void);
         //because we do not know what is the type of the number
         template <typename T>
 
@@ -34,16 +37,21 @@ class Span{
             size_t index;
 
             if(elements.size() < 2)
-                throw std::logic_error("Short span error, teh vector has less that two elements.");
+                throw std::logic_error("Short span error, the vector has less that two elements.");
 
             std::sort(elements.begin(), elements.end());
-            T shortspan = std::numeric_limits<T>::max();
 
-            for(index = 0; index < elements.size(); index++)
+            T shortspan = elements[1] - elements[0];
+
+            for(index = 1; index < elements.size() - 1; ++index)
             {
-                shortspan = std::min(shortspan, elements[index] - elements[index - 1]);
+                T current_span = elements[index + 1] - elements[index];
+                if (current_span < shortspan)
+                {
+                    shortspan = current_span;
+                }
             }
-            return (shortspan);
+            return shortspan;
         }
 
         template <typename T>

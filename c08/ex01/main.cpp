@@ -1,9 +1,10 @@
 #include "Span.hpp"
+#include <cstdlib>
 
 int main()
 {
     Span span = Span(4);
-
+    Span big = Span(10000);
     try
     {
         std::cout << span.shortspane<int>() << std::endl;
@@ -31,22 +32,50 @@ int main()
     {
         std::cerr << e.what() << '\n';
     }
-    
     try
     {
         std::cout << span.shortspane<int>() << std::endl;
     }
-    catch (const std::logic_error& e)
+    catch (const std::exception e)
     {
         std::cout << e.what() << std::endl;
     }
     try
     {
-        span.longspane<int>();
+        std::cout << span.longspane<int>() << std::endl;
     }
-    catch (const std::logic_error& e)
+    catch (const std::exception& e)
     {
         std::cout << e.what() << std::endl;
     }
-     return 0;
+    try
+    {
+        for(size_t i = 0 ; i < big.getN(); i++)
+        {
+            static int n = rand() % 10 + 1;
+            big.addNumber(n);
+            n++;
+        }
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    try
+    {
+        std::cout << big.shortspane<int>() << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    try
+    {
+        std::cout << big.longspane<int>() << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    return 0;
 }
