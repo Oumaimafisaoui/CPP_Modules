@@ -17,7 +17,7 @@ class Span{
         ~Span();
         Span(const Span &obj);
         Span &operator=(const Span &obj);
-        size_t getN(void);
+        size_t getN(void) const;
         //because we do not know what is the type of the number
         template <typename T>
 

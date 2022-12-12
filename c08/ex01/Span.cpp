@@ -32,7 +32,7 @@ Span &Span::operator=(const Span &obj)
     return (*this);
 }
 
-size_t Span::getN(void)
+size_t Span::getN(void) const
 {
     return (this->N);
 }
