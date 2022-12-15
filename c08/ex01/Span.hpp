@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/15 19:35:50 by oufisaou          #+#    #+#             */
+/*   Updated: 2022/12/15 22:59:19 by oufisaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SPAN_HPP
 #define SPAN_HPP
 
@@ -18,52 +30,10 @@ class Span{
         Span(const Span &obj);
         Span &operator=(const Span &obj);
         size_t getN(void) const;
-        //because we do not know what is the type of the number
-        template <typename T>
+        void addNumber(int n);
+      
 
-        void addNumber(T n)
-        {
-            if(elements.size() == N)
-                throw std::out_of_range("Span is full");
-            else if (elements.size() >= elements.capacity())
-                throw std::logic_error("size is bigget than capacity");
-            elements.push_back(n);
-        }
-
-        template <typename T>
-
-        T shortspane(void)
-        {
-            size_t index;
-
-            if(elements.size() < 2)
-                throw std::logic_error("Short span error, the vector has less that two elements.");
-
-            std::sort(elements.begin(), elements.end());
-
-            T shortspan = elements[1] - elements[0];
-
-            for(index = 1; index < elements.size() - 1; ++index)
-            {
-                T current_span = elements[index + 1] - elements[index];
-                if (current_span < shortspan)
-                {
-                    shortspan = current_span;
-                }
-            }
-            return shortspan;
-        }
-
-        template <typename T>
-
-        T longspane(void)
-        {
-            if(elements.size() < 2)
-                throw std::logic_error("Short span error.");
-
-            std::sort(elements.begin(), elements.end());
-
-            return ((elements.back()) - elements.front());
-        }
+        unsigned int shortspane(void);
+        unsigned int longspane(void);
 };
 #endif

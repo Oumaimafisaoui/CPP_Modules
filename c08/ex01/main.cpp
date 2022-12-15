@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/15 19:36:04 by oufisaou          #+#    #+#             */
+/*   Updated: 2022/12/15 23:25:44 by oufisaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Span.hpp"
 #include <cstdlib>
 
 int main()
 {
     Span span = Span(4);
-    Span big = Span(10000);
+    Span big = Span(1000);
     try
     {
-        std::cout << span.shortspane<int>() << std::endl;
+        std::cout << span.shortspane() << std::endl;
     }
     catch(const std::exception& e)
     {
@@ -32,17 +44,26 @@ int main()
     {
         std::cerr << e.what() << '\n';
     }
+    Span k = span;
     try
     {
-        std::cout << span.shortspane<int>() << std::endl;
+        k.shortspane();
     }
-    catch (const std::exception e)
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    try
+    {
+        std::cout << span.shortspane() << std::endl;
+    }
+    catch (const std::exception &e)
     {
         std::cout << e.what() << std::endl;
     }
     try
     {
-        std::cout << span.longspane<int>() << std::endl;
+        std::cout << span.longspane() << std::endl;
     }
     catch (const std::exception& e)
     {
@@ -52,11 +73,7 @@ int main()
     {
         //it fills the array from 0 1 to 10000 in order to see the difference
         for(size_t i = 0 ; i < big.getN(); i++)
-        {
-            static int n = rand() % 10 + 1;
-            big.addNumber(n);
-            n++;
-        }
+            big.addNumber(i);
     }
     catch(const std::exception& e)
     {
@@ -64,7 +81,7 @@ int main()
     }
     try
     {
-        std::cout << big.shortspane<int>() << std::endl;
+        std::cout << big.shortspane() << std::endl;
     }
     catch(const std::exception& e)
     {
@@ -72,7 +89,7 @@ int main()
     }
     try
     {
-        std::cout << big.longspane<int>() << std::endl;
+        std::cout << big.longspane() << std::endl;
     }
     catch(const std::exception& e)
     {
