@@ -6,7 +6,7 @@
 /*   By: oufisaou <oufisaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 21:21:55 by oufisaou          #+#    #+#             */
-/*   Updated: 2022/12/15 21:21:58 by oufisaou         ###   ########.fr       */
+/*   Updated: 2022/12/15 23:46:46 by oufisaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class MutantStack : public std::stack<T>
 {
     public:
         MutantStack();
-        virtual ~MutantStack();  
+        ~MutantStack();  
         MutantStack(const MutantStack &obj);
         MutantStack& operator=(const MutantStack &obj);
         
@@ -38,6 +38,14 @@ class MutantStack : public std::stack<T>
         iterator end()
         {
             return (std::stack<T>::c.end());
+        }
+        const_iterator cbegin()
+        {
+            return (std::stack<T>::c.cbegin());
+        }
+        const_iterator cend()
+        {
+            return (std::stack<T>::c.cend());
         }
 };
 
