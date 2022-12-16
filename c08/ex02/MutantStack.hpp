@@ -24,7 +24,7 @@ class MutantStack : public std::stack<T>
         ~MutantStack();  
         MutantStack(const MutantStack &obj);
         MutantStack& operator=(const MutantStack &obj);
-        
+     
         // use the underlying containcer iterators to iterate on stack
 
         typedef typename std::stack<T>::container_type::iterator iterator;
