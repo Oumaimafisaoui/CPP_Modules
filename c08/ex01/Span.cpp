@@ -55,6 +55,18 @@ void Span::addNumber(int n)
     elements.push_back(n);
 }
 
+
+void Span::bubble_sort(std::vector<int> &vec) 
+{
+  for (int i = 0; i < vec.size(); i++) {
+    for (int j = 0; j < vec.size() - i - 1; j++) {
+      if (vec[j] > vec[j + 1]) {
+        std::swap(vec[j], vec[j + 1]);
+      }
+    }
+  }
+}
+
 unsigned int Span::shortspane(void)
 {
     size_t index;
@@ -62,7 +74,7 @@ unsigned int Span::shortspane(void)
     if(elements.size() < 2)
         throw std::logic_error("Short span error, the vector has less that two elements.");
 
-    std::sort(elements.begin(), elements.end());
+    bubble_sort(elements);
 
     unsigned int shortspan = elements[1] - elements[0];
 

@@ -31,7 +31,7 @@ class Span{
         Span &operator=(const Span &obj);
         size_t getN(void) const;
         void addNumber(int n);
-      
+        void bubble_sort(std::vector<int> &vec);
 
         unsigned int shortspane(void);
         unsigned int longspane(void);
